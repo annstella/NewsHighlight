@@ -24,7 +24,7 @@ def get_articles(category):
 
         if get_articles_response['results']:
             article_results_list = get_articles_response['results']
-            movie_results = process_results(movie_results_list)
+            article_results = process_results(article_results_list)
 
 
-    return movie_results
+    return article_results
