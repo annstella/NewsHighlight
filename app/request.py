@@ -6,3 +6,6 @@ Article = article.Article
 
 #Getting api key
 api_key = app.config['ARTICLE_API_KEY']
+
+# Getting the article base url
+base_url = app.config["ARTICLE_API_BASE_URL"]
