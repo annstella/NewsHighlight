@@ -8,10 +8,10 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    message = 'Hello World'
-    return render_template('index.html',message = message)
+    title = 'NewsHighlights'
+    return render_template('index.html',title = title)
 
-@app.route('/article/<article_id>')
+@app.route('/article/<int:article_id>')
 def article(article_id):
 
     '''
