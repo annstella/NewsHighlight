@@ -28,3 +28,28 @@ def get_articles(category):
 
 
     return article_results
+
+def process_results(article_list):
+    '''
+    Function  that processes the article result and transform them to a list of Objects
+
+    Args:
+        article_list: A list of dictionaries that contain article details
+
+    Returns :
+        article_results: A list of article objects
+    '''
+    article_results = []
+    for article_item in article_list:
+        id = article_item.get('id')
+        title = article_item.get('original_title')
+        overview = article_item.get('overview')
+        poster = article_item.get('poster_path')
+        vote_average = article_item.get('vote_average')
+        vote_count = article_item.get('vote_count')
+
+        if poster:
+            article_object = Article(id,title,overview,poster,vote_average,vote_count)
+            article_results.append(article_object)
+
+    return article_results
