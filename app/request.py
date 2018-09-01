@@ -42,11 +42,12 @@ def process_results(article_list):
     article_results = []
     for article_item in article_list:
         id = article_item.get('id')
+        name = article_item.get('name')
         title = article_item.get('original_title')
-        overview = article_item.get('overview')
-        poster = article_item.get('poster_path')
-        vote_average = article_item.get('vote_average')
-        vote_count = article_item.get('vote_count')
+        description = article_item.get('description')
+        url = article_item.get('url_path')
+        urlToImage = article_item.get('urlToImage_path')
+        publishedAt = article_item.get('publishedAt')
 
         if poster:
             article_object = Article(id,title,overview,poster,vote_average,vote_count)

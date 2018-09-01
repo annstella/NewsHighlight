@@ -9,6 +9,13 @@
         {% endif %}
     </head>
     <body>
+        <!-- Business article section  -->
+        <h3> Business articles</h3>
+         <ul>
+            {% for business_article in business %}
+                <li>{{ business_article.title}}</li>
+            {% endfor %}
+        </ul>
 
     </body>
 </html>
