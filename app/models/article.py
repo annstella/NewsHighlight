@@ -7,7 +7,7 @@ class Article:
         self.id =id
         self.name = name
         self.title = title
-        self.overview = overview
-        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
-        self.vote_average = vote_average
-        self.vote_count = vote_count
+        self.description = description
+        self.url = 'https://image.tmdb.org/t/p/w500/'+ poster
+        self.urlToImage = urlToImage
+        self.publishedAt =publishedAt
