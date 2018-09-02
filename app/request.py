@@ -22,8 +22,8 @@ def get_articles(category):
 
         article_results = None
 
-        if get_articles_response['results']:
-            article_results_list = get_articles_response['results']
+        if get_articles_response['sources']:
+            article_results_list = get_articles_response['sources']
             article_results = process_results(article_results_list)
 
 
@@ -43,14 +43,10 @@ def process_results(article_list):
     for article_item in article_list:
         id = article_item.get('id')
         name = article_item.get('name')
-        title = article_item.get('original_title')
         description = article_item.get('description')
-        url = article_item.get('url_path')
-        urlToImage = article_item.get('urlToImage_path')
-        publishedAt = article_item.get('publishedAt')
-
-        if poster:
-            article_object = Article(id,title,overview,poster,vote_average,vote_count)
+       
+        if id:
+            article_object = Article(id,name,description)
             article_results.append(article_object)
 
     return article_results

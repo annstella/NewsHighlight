@@ -9,11 +9,11 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-     # Getting popular article
-    business_articles = get_articles('business')
+     # Getting business article
+    business_articles = get_articles('technology')
     print(business_articles)
     title = 'Home - Welcome to The best article Highlights Online'
-    return render_template('index.html', title = title,business = business_articles)
+    return render_template('index.html', title = title, business_articles = business_articles)
 
 @app.route('/article/<int:article_id>')
 def article(article_id):

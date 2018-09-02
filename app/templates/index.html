@@ -12,8 +12,9 @@
         <!-- Business article section  -->
         <h3> Business articles</h3>
          <ul>
-            {% for business_article in business %}
-                <li>{{ business_article.title}}</li>
+            {% for article in business_articles %}
+                <li>{{ article.title}}</li>
+                <li>{{ article.description}}</li>
             {% endfor %}
         </ul>
 
