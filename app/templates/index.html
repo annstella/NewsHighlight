@@ -18,5 +18,23 @@
             {% endfor %}
         </ul>
 
+         <!-- Sports article section  -->
+         <h3> Sports articles</h3>
+         <ul>
+            {% for article in sports_articles %}
+                <li>{{ article.name}}</li>
+                <li>{{ article.description}}</li>
+            {% endfor %}
+        </ul>
+
+         <!-- Technology article section  -->
+         <h3> Technology articles</h3>
+         <ul>
+            {% for article in technology_articles %}
+                <li>{{ article.name}}</li>
+                <li>{{ article.description}}</li>
+            {% endfor %}
+        </ul>
+
     </body>
 </html>
