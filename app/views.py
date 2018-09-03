@@ -25,7 +25,9 @@ def article(article_id):
     '''
     View article page function that returns the article details page and its data
     '''
-    return render_template('article.html',id = article_id)
+     article = get_article(id)
+    title = f'{article.title}'
+    return render_template('article.html', title = title,id = article_id)
 
 
 
