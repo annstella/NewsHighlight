@@ -10,31 +10,20 @@
         {% endif %}
     </head>
     <body>
-        <!-- Business article section  -->
-        <h3> Business articles</h3>
-         <ul>
-            {% for article in business_articles %}
-                <li>{{ article.name}}</li>
-                <li>{{ article.description}}</li>
-            {% endfor %}
+        <!-- Business article -->
+        <h3> Business Articles</h3>
+        <ul>
+            {{ macro.displayArticleList(business)}}
         </ul>
-
-         <!-- Sports article section  -->
-         <h3> Sports articles</h3>
-         <ul>
-            {% for article in sports_articles %}
-                <li>{{ article.name}}</li>
-                <li>{{ article.description}}</li>
-            {% endfor %}
+        <!-- Sports article  -->
+        <h3> Sports Articles </h3>
+        <ul>
+            {{ macro.displayArticleList(sports)}}
         </ul>
-
-         <!-- Technology article section  -->
-         <h3> Technology articles</h3>
-         <ul>
-            {% for article in technology_articles %}
-                <li>{{ article.name}}</li>
-                <li>{{ article.description}}</li>
-            {% endfor %}
+        <!-- Technology article -->
+        <h3>Technology articles</h3>
+        <ul>
+            {{ macro.displayArticleList(technology)}}
         </ul>
 
     </body>
