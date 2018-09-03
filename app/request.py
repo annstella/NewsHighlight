@@ -50,3 +50,20 @@ def process_results(article_list):
             article_results.append(article_object)
 
     return article_results
+
+def get_article(id):
+    get_article_details_url = base_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_article_details_url) as url:
+        article_details_data = url.read()
+        article_details_response = json.loads(article_details_data)
+
+        article_object = None
+        if article_details_response:
+            id = article_details_response.get('id')
+            name = article_details_response.get('original_name')
+            description = article_details_response.get('description') 
+
+            article_object = Article(id,name,description)
+
+    return article_object
