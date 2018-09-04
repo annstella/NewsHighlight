@@ -6,7 +6,7 @@ class Config:
     ARTICLE_API_BASE_URL='https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'
     SOURCE_API_URL='https://newsapi.org/v2/everything?sources={}&apiKey={}'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    NEWS_API
+    ARTICLE_API_KEY = os.environ.get('ARTICLE_API_KEY')
 
 
 
@@ -32,6 +32,6 @@ class DevConfig(Config):
     DEBUG = True
 
 Config_options = {
-    'development':Devconfig,
+    'development':DevConfig,
     'production': ProdConfig
 }

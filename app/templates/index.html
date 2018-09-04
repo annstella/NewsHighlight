@@ -33,19 +33,35 @@
         </div>
         {%endfor%}
 </ul>
-<!-- Sports article  -->
-<h3> Sports Articles </h3>
-<ul>
-    {{ macro.displayArticleList(sports)}}
+
+
+<!-- Sports article -->
+<h3> Sports Articles</h3>
+<ul>  {% for sports_article in sports_articles %}
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 article-card">
+    <!-- <img src="{{ sports_article.poster }}" alt="{{ sports_article.title }} poster" class="img-responsive"> -->
+    <li class="text-center">
+        <a href="/article/{{sports_article.id}}">
+            {{ sports_article.name|truncate(10)}}</a>
+    </li>
+</div>
+{%endfor%}
 </ul>
+
+
 <!-- Technology article -->
-<h3>Technology articles</h3>
-<ul>
-    {{ macro.displayArticleList(technology)}}
+<h3> Technology Articles</h3>
+<ul>  {% for technology_article in technology_articles %}
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 article-card">
+    <!-- <img src="{{ technology_article.poster }}" alt="{{ technology_article.title }} poster" class="img-responsive"> -->
+    <li class="text-center">
+        <a href="/article/{{technology_article.id}}">
+            {{ technology_article.name|truncate(10)}}</a>
+    </li>
+</div>
+{%endfor%}
+
 </ul>
-
-
-{% endblock%}
-
+    {%endblock%}
     </body>
 </html>

@@ -1,14 +1,16 @@
-from app import app
 import urllib.request,json
-from .models import article,Source
-
-Article = article.Article
+from .models import Article, Source
 
 #Getting api key
-api_key = app.config['ARTICLE_API_KEY']
+api_key = None
 
 # Getting the article base url
-base_url = app.config["ARTICLE_API_BASE_URL"]
+base_url = None
+
+def configure_request(app):
+    global api_key, base_url
+    api_key = app.config['ARTICLE_API_KEY']
+    base_url = app.config['ARTICLE_API_BASE_URL']
 
 def get_articles(category):
     '''
@@ -66,25 +68,23 @@ def get_source(id):
             name = source_details_response.get('original_name')
             description = source_details_response.get('description') 
 
-            source_object = Source(id,name,description)
+            source_object = Source(id,name,     author,url,description,country,category)
 
-    return source_object
+            return source_object
 
 def process_source(source_list):
     '''
     '''
     source_results = []
     for source_item in source_list:
-        title = source_item.get('title')
-        description = source_item.get('description')
-        image = source_item.get('urlToImage')
-        publishedAt = source_item.get('publishedAt')
+        id = source_item.get('id')
+        name = source_item.get('name')
         author = source_item.get('author')
         url = source_item.get('url')
+        description = source_item.get('description')
+        country = source_item.get('country')
+        category = source_item.get('category')
 
 
-        if image:
-            source_object = Source(title, description, image, publishedAt, author, url)
-            source_results.append(source_object)
             
     return source_results

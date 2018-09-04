@@ -1,10 +1,10 @@
-from flask import render_template
-from app import app
-from .request import get_articles
-from .request import get_articles,get_article
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_articles,get_source
+from ..models import Source
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -19,7 +19,7 @@ def index():
     title = 'Home - Welcome to The best article Highlights Online'
     return render_template('index.html', title = title, business_articles = business_articles, sports_articles = sports_articles, technology_articles = technology_articles)
 
-@app.route('/article/<int:article_id>')
+@main.route('/article/<int:article_id>')
 def article(article_id):
 
     '''
