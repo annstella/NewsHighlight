@@ -20,10 +20,18 @@
         {% endif %}
     </head>
     <body>
+    {% block content %}
         <!-- Business article -->
 <h3> Business Articles</h3>
-<ul>
-    {{ macro.displayArticleList(business)}}
+<ul>  {% for business_article in business_articles %}
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 article-card">
+            <!-- <img src="{{ business_article.poster }}" alt="{{ business_article.title }} poster" class="img-responsive"> -->
+            <li class="text-center">
+                <a href="/article/{{business_article.id}}">
+                    {{ business_article.name|truncate(10)}}</a>
+            </li>
+        </div>
+        {%endfor%}
 </ul>
 <!-- Sports article  -->
 <h3> Sports Articles </h3>

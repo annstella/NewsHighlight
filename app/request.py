@@ -1,6 +1,6 @@
 from app import app
 import urllib.request,json
-from .models import article
+from .models import article,Source
 
 Article = article.Article
 
@@ -51,19 +51,40 @@ def process_results(article_list):
 
     return article_results
 
-def get_article(id):
-    get_article_details_url = base_url.format(id,api_key)
+def get_source(id):
 
-    with urllib.request.urlopen(get_article_details_url) as url:
-        article_details_data = url.read()
-        article_details_response = json.loads(article_details_data)
+    get_source_details_url = base_url.format(id,api_key)
 
-        article_object = None
-        if article_details_response:
-            id = article_details_response.get('id')
-            name = article_details_response.get('original_name')
-            description = article_details_response.get('description') 
+    with urllib.request.urlopen(get_source_details_url) as url:
+        source_details_data = url.read()
+        source_details_response = json.loads(source_details_data)
 
-            article_object = Article(id,name,description)
+        source_object = None
 
-    return article_object
+        if source_details_response:
+            id = source_details_response.get('id')
+            name = source_details_response.get('original_name')
+            description = source_details_response.get('description') 
+
+            source_object = Source(id,name,description)
+
+    return source_object
+
+def process_source(source_list):
+    '''
+    '''
+    source_results = []
+    for source_item in source_list:
+        title = source_item.get('title')
+        description = source_item.get('description')
+        image = source_item.get('urlToImage')
+        publishedAt = source_item.get('publishedAt')
+        author = source_item.get('author')
+        url = source_item.get('url')
+
+
+        if image:
+            source_object = Source(title, description, image, publishedAt, author, url)
+            source_results.append(source_object)
+            
+    return source_results

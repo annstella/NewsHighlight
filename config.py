@@ -1,9 +1,13 @@
+import os
 class Config:
     '''
     General configuration parent class
     '''
     ARTICLE_API_BASE_URL='https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'
-    pass
+    SOURCE_API_URL='https://newsapi.org/v2/everything?sources={}&apiKey={}'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    NEWS_API
+
 
 
 
@@ -26,3 +30,8 @@ class DevConfig(Config):
     '''
 
     DEBUG = True
+
+Config_options = {
+    'development':Devconfig,
+    'production': ProdConfig
+}
