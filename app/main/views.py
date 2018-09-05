@@ -10,13 +10,15 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-     # Getting business article
+    title = "Home || Sources"
+
+     # Getting  articles
     business_articles = get_articles('business')
     sports_articles = get_articles('sports')
     technology_articles = get_articles('technology')
 
-    # print(business_articles)
-    title = 'Home - Welcome to The best article Highlights Online'
+    # print(articles)
+   
     return render_template('index.html', title = title, business_articles = business_articles, sports_articles = sports_articles, technology_articles = technology_articles)
 
 @main.route('/article/<int:article_id>')
@@ -26,8 +28,8 @@ def article(article_id):
     View article page function that returns the article details page and its data
     '''
     article = get_article(id)
-    title = f'{article.title}'
-    return render_template('article.html', title = title,id = article_id)
+    # title = f'{article.title}'
+    # return render_template('article.html', article = article)
 
 
 

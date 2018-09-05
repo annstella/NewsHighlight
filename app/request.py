@@ -44,11 +44,15 @@ def process_results(article_list):
     article_results = []
     for article_item in article_list:
         id = article_item.get('id')
-        name = article_item.get('name')
+        title = article_item.get('title')
         description = article_item.get('description')
-       
+        image = article_item.get('image')
+        publishedAt = article_item.get('publishedAt')
+        author = article_item.get('author')       
+        url = article_item.get('url')
+
         if id:
-            article_object = Article(id,name,description)
+            article_object = Article(id,title, description, image, publishedAt, author, url)
             article_results.append(article_object)
 
     return article_results
