@@ -1,8 +1,7 @@
-class Article:
+class Articles:
     '''
-    Article class to define Article Objects
+    articles class to define article objects
     '''
-
     def __init__(self, title, description, image, publishedAt, author, url):
         self.title = title
         self.description = description
@@ -11,35 +10,17 @@ class Article:
         self.author = author
         self.url = url
 
-class Source:
-
-    all_sources = []
-
-    def __init__(self,id,name,author,url,description,country,category):
-        self.id = id
+class News:
+    '''
+    news class to define news objects
+    '''
+    def __init__(self, name, author, url,description, country,category, id):
         self.name = name
         self.author = author
         self.url = url
         self.description = description
         self.country = country
         self.category = category
+        self.id = id
+    
 
-
-    def save_source(self):
-        Source.all_sources.append(self)
-
-
-    @classmethod
-    def clear_sources(cls):
-        Source.all_sources.clear()
-
-    @classmethod
-    def get_sources(cls,id):
-
-        response = []
-
-        for source in cls.all_sources:
-            if source.id == id:
-                response.append(source)
-
-        return response

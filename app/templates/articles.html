@@ -1,11 +1,13 @@
-{% extends 'base.html'%}
-<!-- Content block -->
+{% extends 'base.html' %} 
 {% block content %}
-<div class="container">
-    <!-- Poster background -->
+
+
+
+<div class="container-fluid">
     <div class="row">
-            {% for article in news %}   
-        <div class="col-xs-6 col-sm-12 col-md-12 ">
+
+        {% for article in news %}
+        <div class="col-md-4">
                 <div class="thumbnail">
                     <div class="details">
                         <h4>{{article.description | truncate(100)}}</h4>
@@ -13,12 +15,14 @@
                         <p>Posted on : {{article.publishedAt}}</p>
                     </div>
                     <a>
-                    <img src="{{article.image}}" class="img-responsive" styles="height:20px">     
+                    <img src="{{article.image}}" class="img-responsive" styles="height:20px">
                     </a>
+                    
                 </div>
+            </div>
 
-        </div>
+        {% endfor %}
     </div>
-
 </div>
-{% endblock %}
+
+{% endblock%}

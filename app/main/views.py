@@ -1,38 +1,45 @@
-from flask import render_template,request,redirect,url_for
+from flask import render_template, request, redirect, url_for
 from . import main
-from ..request import get_articles,get_source
-from ..models import Source
+from ..request import get_articles, get_news
 
-# Views
+
 @main.route('/')
 def index():
-
     '''
-    View root page function that returns the index page and its data
+    view root page that returns the index page and its data
     '''
-    title = "Home || Sources"
+    title = "Home || News Sources"
 
-     # Getting  articles
-    business_articles = get_articles('business')
-    sports_articles = get_articles('sports')
-    technology_articles = get_articles('technology')
+    all_news = get_news('sports')
+    general_news = get_news('general')
+    tech_news = get_news('technology')
+    bus_news = get_news('business')
+    sci_news = get_news('science')
 
-    # print(articles)
-   
-    return render_template('index.html', title = title, business_articles = business_articles, sports_articles = sports_articles, technology_articles = technology_articles)
+    return render_template('index.html', title= title, sports = all_news, general = general_news, technology = tech_news, business = bus_news, science = sci_news)
 
-@main.route('/article/<int:article_id>')
-def article(article_id):
-
+# Views
+@main.route('/news/<int:id>')
+def news(id):
     '''
-    View article page function that returns the article details page and its data
+    View movie page function that returns the movie details page and its data
+     '''
+    news = get_news(id)
+
+    
+    return render_template('index.html', news = news)
+
+
+
+@main.route('/articles/<source_id>')
+def articles(source_id):
     '''
-    article = get_article(id)
-    # title = f'{article.title}'
-    # return render_template('article.html', article = article)
+    function that returns articles by source id
+    '''
 
-
-
+    article_source = get_articles(source_id)
+    title = f'{source_id}| Articles'
+    return render_template('articles.html',title = title, name = source_id, news = article_source )
 
 
    
