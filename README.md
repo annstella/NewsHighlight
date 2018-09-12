@@ -21,7 +21,7 @@ The commonly used language in this application is python and flask
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Link to live site:https://mpasho.herokuapp.com/
 
 
 ## Authors
